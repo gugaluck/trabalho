@@ -1,10 +1,13 @@
 <?php
 
-define('host',' 127.0.0.1');
-define('usuario', 'root');
-define('senha', '123');
-define('db','trabalho');
+$banco = 'mysql:host=localhost;dbname=trabalho';
+$usuario = 'root';
+$senha = '';
 
-$conexao = mysqli_connect(host, usuario, senha, db);
+try{
+    $conn = new PDO($banco, $usuario, $senha);
+}   catch (PDOException $e){
 
-?>
+    echo 'Erro: '. $e->getMessage();
+}
+
