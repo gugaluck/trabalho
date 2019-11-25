@@ -13,7 +13,7 @@
 		}
 	?>
 	<div class="login">
-		<form class="form-logar">       
+		<form class="form-logar" method="POST" action="valida.php">       
 			<h2 class="form-logar-heading">Login</h2>
 			<input type="text" class="form-campo" name="nome" placeholder="Digite seu usuário" required="" autofocus="" />
 			<input type="password" class="form-campo" name="senha" placeholder="Digite sua senha" required=""/>      
