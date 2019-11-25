@@ -7,9 +7,9 @@ if(empty($_POST['nome']) || empty($_POST['sobrenome'])) {
 	exit();
 }
  
-$usuario = mysqli_real_escape_string($conexao, $_POST['nome']);
-$senha = mysqli_real_escape_string($conexao, $_POST['sobrenome']);
-$query = "select * from funcionarios where nome = '{$nome}' and sobrenome {$sobrenome}";
+$nome = mysqli_real_escape_string($conexao, $_POST['nome']);
+$sobrenome = mysqli_real_escape_string($conexao, $_POST['sobrenome']);
+$query = "select * from funcionarios where (nome = '{$nome}') and (sobrenome = '{$sobrenome}')";
 $result = mysqli_query($conexao, $query);
 $row = mysqli_num_rows($result);
  
