@@ -1,5 +1,5 @@
 body {
-	background: black;	
+	background: grey;	
 }
 
 .login {	
@@ -22,7 +22,7 @@ body {
     font-weight: normal;
 }
 
-.form-control {
+.form-campo {
     position: relative;
     font-size: 13px;
     height: auto;
