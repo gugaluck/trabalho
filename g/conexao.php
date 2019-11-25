@@ -1,7 +1,9 @@
 <?php
+
+function getConnection(){
 $username = 'root';
 $password = '';
-$banco = 'aula';
+$banco = 'trabalho';
 
 try {
     $conn = new PDO('mysql:host=localhost;dbname='.$banco, 
@@ -10,3 +12,8 @@ try {
 } catch(PDOException $e) {
     echo 'ERROR: '. $e->getMessage();
 }   
+
+$teste = getConnection();
+print_r($teste);
+
+}

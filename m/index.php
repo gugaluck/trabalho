@@ -14,7 +14,7 @@
             <form action="login.php" method="POST">
                 <div>
                     <div>
-                        <input name="usuario" placeholder="Digite Seu Nome..." autofocus="">
+                        <input name="usuario" method="POST" placeholder="Digite Seu Nome..." autofocus="">
                     </div>
                 </div>
 
