@@ -7,10 +7,10 @@
 
     try {
         if (isset($id)) {
-            $stmt = $conn->prepare('SELECT * FROM clientes WHERE id = :IDCliente');
-            $stmt->bindParam(':IDCliente', $id, PDO::PARAM_INT);
+            $stmt = $conn->prepare('SELECT * FROM fornecedores WHERE id = :IDFornecedor');
+            $stmt->bindParam(':IDFornecedor', $id, PDO::PARAM_INT);
         } else {
-            $stmt = $conn->prepare('SELECT * FROM clientes  ');
+            $stmt = $conn->prepare('SELECT * FROM fornecedores');
         }
 
         $stmt->execute();
