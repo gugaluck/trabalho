@@ -1,29 +1,37 @@
 <?php
 session_start();
 include('conexao.php');
- 
-if(empty($_POST['login']) || empty($_POST['senha'])) {
-	header('Location: index.php');
-	exit();
-} 
+
 
 $login = $_POST['login'];
 $senha = $_POST['senha'];
+$sql = "SELECT * FROM usuario WHERE login='$login' AND senha='$senha'";
+$result->execute();
+$contar = $result->rowCount();
 
-$con = mysql_connect("127.0.0.1", "root", "") or die
- ("Sem conexão");
-$select = mysql_select_db("server") or die("não conectado");
-$result = mysql_query("SELECT * FROM `USUARIO` 
-WHERE `NOME` = '$login' AND `SENHA`= '$senha'");
-if(mysql_num_rows ($result) > 0 )
-{
-$_SESSION['login'] = $login;
-$_SESSION['senha'] = $senha;
-header('location:painel.php');
+// se não encontrou resultado, é porque o usuário não existe
+if($contar < 1){
+    $errorMsg = "Usuário não existe.";
+}else{        
+    // verifica se senha  estão corretos, pois na consulta foi verificado apenas o usuário
+    if($senha != $dadosBd["senha"]){
+        $errorMsg = "Senha incorreta.";
+    }
 }
-else{
-  unset ($_SESSION['login']);
-  unset ($_SESSION['senha']);
-  header('location:index.php');
-  }
+
+// se $errorMsg estiver vazio é porque não deu erro, então pode criar a sessão normalmente
+if(empty($errorMsg)){
+    $_SESSION['usuario'] = $dadosBd['usuario'];
+    header("Location: painel.php");
+    exit;
+}else{
+    echo "
+        <META HTTP-EQUIV=REFRESH CONTENT='0; URL=index.php'>
+        <script>
+            alert('".$errorMsg."');
+        </script>
+    ";
+}
+
+
 ?>
