@@ -5,33 +5,33 @@ include('conexao.php');
 
 $login = $_POST['login'];
 $senha = $_POST['senha'];
-$sql = "SELECT * FROM usuario WHERE login='$login' AND senha='$senha'";
-$result->execute();
-$contar = $result->rowCount();
+$sql = ("SELECT * FROM usuario WHERE login='$login' AND senha='$senha'") or die("login ou senha incorretos");
+$con = new PDO("mysql:host=localhost;dbname=northwind", "root", ""); 
+echo($sql);
 
-// se não encontrou resultado, é porque o usuário não existe
-if($contar < 1){
-    $errorMsg = "Usuário não existe.";
-}else{        
-    // verifica se senha  estão corretos, pois na consulta foi verificado apenas o usuário
-    if($senha != $dadosBd["senha"]){
-        $errorMsg = "Senha incorreta.";
+$rows = $sql->fetchAll();
+print_r($rows);
+/*
+      $active = $sql['active'];
+      $count = mysqli_num_rows($result);
+      
+      // If result matched login and $mypassword, table row must be 1 row
+		
+      if($count == 1) {
+         session_register("login");
+         $_SESSION['login_user'] = login;
+         
+         header("location: painel.php");
+      }else {
+         $error = "login ou senha incorretos";
+      }
+
+    if (($login) and ($senha)<=0){
+      echo"teste";
+    }else{
+      setcookie("login",$login);
+      echo"teste2";
+      header("Location:painel.php");
     }
-}
-
-// se $errorMsg estiver vazio é porque não deu erro, então pode criar a sessão normalmente
-if(empty($errorMsg)){
-    $_SESSION['usuario'] = $dadosBd['usuario'];
-    header("Location: painel.php");
-    exit;
-}else{
-    echo "
-        <META HTTP-EQUIV=REFRESH CONTENT='0; URL=index.php'>
-        <script>
-            alert('".$errorMsg."');
-        </script>
-    ";
-}
-
-
+*/
 ?>
