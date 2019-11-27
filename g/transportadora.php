@@ -7,10 +7,10 @@
 
     try {
         if (isset($id)) {
-            $stmt = $conn->prepare('SELECT * FROM  clientes WHERE id = :IDCliente');
-            $stmt->bindParam(':IDCliente', $id, PDO::PARAM_INT);
+            $stmt = $conn->prepare('SELECT * FROM transportadoras WHERE id = :IDTransportadora');
+            $stmt->bindParam(':IDTransportadora', $id, PDO::PARAM_INT);
         } else {
-            $stmt = $conn->prepare('SELECT * FROM clientes');
+            $stmt = $conn->prepare('SELECT * FROM transportadoras');
         }
 
         $stmt->execute();
@@ -29,11 +29,11 @@
             foreach($result as $row) {
                 ?>
                 <tr>
-                    <td><?=$row['IDCliente']?></td>
-                    <td><?=$row['NomeContato']?></td>
+                    <td><?=$row['IDTransportadora']?></td>
+                    <td><?=$row['NomeConpanhia']?></td>
                     <td>
-                        <a href="?modulo=clientes&pagina=alterar&id=<?=$row['id']?>">Alterar</a>
-                        <a href="?modulo=clientes&pagina=deletar&id=<?=$row['id']?>">Excluír</a>
+                        <a href="?modulo=transportadoras&pagina=alterar&id=<?=$row['id']?>">Alterar</a>
+                        <a href="?modulo=transportadoras&pagina=deletar&id=<?=$row['id']?>">Excluír</a>
                     </td>
                 </tr>
                 <?php
