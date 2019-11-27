@@ -2,25 +2,28 @@
 session_start();
 include('conexao.php');
  
-if(empty($_POST['nome']) || empty($_POST['sobrenome'])) {
+if(empty($_POST['login']) || empty($_POST['senha'])) {
 	header('Location: index.php');
 	exit();
-}
- 
-$nome = mysqli_real_escape_string($conexao, $_POST['nome']);
-$sobrenome = mysqli_real_escape_string($conexao, $_POST['sobrenome']);
-$query = "select * from funcionarios where (nome = '{$nome}') and (sobrenome = '{$sobrenome}')";
-$result = mysqli_query($conexao, $query);
-$row = mysqli_num_rows($result);
- 
-if($row == 1) {
-	$_SESSION['nome'] = $nome;
-	header('Location: painel.php');
-	exit();
+} 
 
-} else {
-	$_SESSION['nao_autenticado'] = true;
-	header('Location: index.php');
-	exit();
+$login = $_POST['login'];
+$senha = $_POST['senha'];
+
+$con = mysql_connect("127.0.0.1", "root", "") or die
+ ("Sem conexão");
+$select = mysql_select_db("server") or die("não conectado");
+$result = mysql_query("SELECT * FROM `USUARIO` 
+WHERE `NOME` = '$login' AND `SENHA`= '$senha'");
+if(mysql_num_rows ($result) > 0 )
+{
+$_SESSION['login'] = $login;
+$_SESSION['senha'] = $senha;
+header('location:painel.php');
 }
+else{
+  unset ($_SESSION['login']);
+  unset ($_SESSION['senha']);
+  header('location:index.php');
+  }
 ?>
