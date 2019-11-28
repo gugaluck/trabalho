@@ -3,12 +3,10 @@
 
 <?php 
 session_start();
-echo $_SESSION['logado'];
-if  (($_SESSION['logado']) == '0')
-{
+if  (($_SESSION['logado']) == '0'){
 	$_SESSION['logado'] = '2';
 	  header('location:index.php');
-  }
+}
  
 ?>
 
@@ -17,13 +15,7 @@ if  (($_SESSION['logado']) == '0')
  
 <body>
 	<table width="600" height="400">
-		<tr>
-			<td height="60" colspan="1"> Teste
-				<?php
-					echo'test';
-				?>
-			</td>
-		</tr>
+		<h2>Login feito com sucesso!</h2>
 	</table>
 </body>
 </html>
