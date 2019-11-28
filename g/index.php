@@ -11,12 +11,13 @@
 			echo $_SESSION['msg'];
 			unset($_SESSION['msg']);
 		}
-	?>
+	
+?>
 	<div class="login">
 		<form class="form-logar" method="POST" action="valida.php">       
 			<h2 class="form-logar-heading">Login</h2>
 			<input type="text" class="form-campo" name="login" placeholder="Digite seu nome" required="" autofocus="" />
-			<input type="text" class="form-campo" name="senha" placeholder="Digite seu sobrenome" required=""/>      
+			<input type="password" class="form-campo" name="senha" placeholder="Digite a senha" required=""/>      
 			<label class="checkbox">
 			</label>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>   

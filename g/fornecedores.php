@@ -30,10 +30,10 @@
                 ?>
                 <tr>
                     <td><?=$row['IDFornecedor']?></td>
-                    <td><?=$row['NomeCompanhia']?></td>
+                    <td><?=$row['NomeContato']?></td>
                     <td>
-                        <a href="?modulo=fornecedores&pagina=alterar&id=<?=$row['id']?>">Alterar</a>
-                        <a href="?modulo=fornecedores&pagina=deletar&id=<?=$row['id']?>">Excluír</a>
+                        <a href="?modulo=transportadoras&pagina=alterar&id=<?=$row['id']?>">Alterar</a>
+                        <a href="?modulo=transportadoras&pagina=deletar&id=<?=$row['id']?>">Excluír</a>
                     </td>
                 </tr>
                 <?php
@@ -42,6 +42,12 @@
             echo "Nenhum resultado retornado.";
         }
 ?>
+<table>
+    <a href="menu.php">
+    <button type="submit">IR PARA O MENU PRINCIPAL</button>
+    </a>
+    
+</table> 
 </table>
 <?php
     } catch(PDOException $e) {

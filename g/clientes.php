@@ -1,49 +1,45 @@
 <?php
+echo "<table style='border: solid 1px black;'>";
+echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
 
-    include ('conexao.php');
-
-    if (isset($_GET['id']))
-        $id = $_GET['id'];
-
-    try {
-        if (isset($id)) {
-            $stmt = $conn->prepare('SELECT * FROM  clientes WHERE id = :IDCliente');
-            $stmt->bindParam(':IDCliente', $id, PDO::PARAM_INT);
-        } else {
-            $stmt = $conn->prepare('SELECT * FROM clientes');
-        }
-
-        $stmt->execute();
-    
-
-        $result = $stmt->fetchAll();
-?>
-<table border="1" class="table table-striped">
-<tr>
-            <td>Id</td>
-            <td>Nome</td>
-            <td>Ação</td>
-</tr>
-<?php
-        if ( count($result) ) {
-            foreach($result as $row) {
-                ?>
-                <tr>
-                    <td><?=$row['IDCliente']?></td>
-                    <td><?=$row['NomeContato']?></td>
-                    <td>
-                        <a href="?modulo=clientes&pagina=alterar&id=<?=$row['id']?>">Alterar</a>
-                        <a href="?modulo=clientes&pagina=deletar&id=<?=$row['id']?>">Excluír</a>
-                    </td>
-                </tr>
-                <?php
-            }
-        } else {
-            echo "Nenhum resultado retornado.";
-        }
-?>
-</table>
-<?php
-    } catch(PDOException $e) {
-        echo 'ERROR: ' . $e->getMessage();
+class TableRows extends RecursiveIteratorIterator {
+    function __construct($it) {
+        parent::__construct($it, self::LEAVES_ONLY);
     }
+
+    function current() {
+        return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
+    }
+
+    function beginChildren() {
+        echo "<tr>";
+    }
+
+    function endChildren() {
+        echo "</tr>" . "\n";
+    }
+}
+
+$username = 'root';
+$password = '';
+$banco = 'northwind';
+
+try {
+    $conn = new PDO('mysql:host=localhost;dbname='.$banco, 
+    $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $stmt = $conn->prepare("SELECT * FROM clientes");
+    $stmt->execute();
+
+    // set the resulting array to associative
+    $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+        echo $v;
+    }
+}
+catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+$conn = null;
+echo "</table>";
+?>
