@@ -11,7 +11,12 @@
 			echo $_SESSION['msg'];
 			unset($_SESSION['msg']);
 		}
-	?>
+		if(isset($_SESSION['logado'])){
+			if  (($_SESSION['logado']) == '2')
+			  echo 'nao logado';
+		}
+	
+?>
 	<div class="login">
 		<form class="form-logar" method="POST" action="valida.php">       
 			<h2 class="form-logar-heading">Login</h2>
