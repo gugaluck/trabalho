@@ -17,11 +17,6 @@ if($stmt = $pdo->prepare($sql)){
       if($stmt->rowCount() == 1)
           if($row = $stmt->fetch())
                 $_SESSION['logado'] = '1';
-              
-            
-          
-        
       }
-      header('location: painel.php');
-          
+      header('location: painel.php');          
 ?>
