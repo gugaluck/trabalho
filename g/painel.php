@@ -3,14 +3,13 @@
 
 <?php 
 session_start();
-if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+echo $_SESSION['logado'];
+if  (($_SESSION['logado']) == '0')
 {
-  unset($_SESSION['login']);
-  unset($_SESSION['senha']);
-  header('location:index.php');
+	$_SESSION['logado'] = '2';
+	  header('location:index.php');
   }
  
-$logado = $_SESSION['login'];
 ?>
 
 <title>Trabalho</title>
@@ -21,7 +20,7 @@ $logado = $_SESSION['login'];
 		<tr>
 			<td height="60" colspan="1"> Teste
 				<?php
-					echo" test $logado";
+					echo'test';
 				?>
 			</td>
 		</tr>
