@@ -1,5 +1,13 @@
 <nav>
 <?php
+
+session_start();
+if  (($_SESSION['logado']) == '0'){
+	$_SESSION['logado'] = '2';
+	  header('location:index.php');
+}
+ 
+
     $menu = ['CLIENTES', 'FORNECEDORES', 'PESSOAS', 'TRANSPORTADORA', 'REGIAO', 'PRODUTOS'];
     $links = ['clientes.php','fornecedores.php','pessoas.php','transportadora.php','regiao.php','produtos.php'];
 
