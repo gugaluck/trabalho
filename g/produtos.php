@@ -1,3 +1,9 @@
+<html>
+<button>
+    <a href="menu.php">IR PARA MENU</a>
+</button>    
+
+</html>
 <?php
 echo "<table style='border: solid 1px black;'>";
 echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
