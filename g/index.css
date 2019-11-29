@@ -40,4 +40,24 @@ input[type="password"] {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+.corpo{
+    background-color: white;
+}
+.cabecalho{
+    font-style: times, arial, sans-serif;
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    background-color: rgba(192, 178, 178, 0.466);
 
+}
+.estilomenu{
+    display: inline-block;
+
+}
+.mm a{
+    display: inline;
+    color: rgb(2, 39, 2);
+    text-decoration: none;
+    list-style-type: none;
+}
