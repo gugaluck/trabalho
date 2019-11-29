@@ -1,9 +1,12 @@
 <html>
-<button>
-    <a href="menu.php">IR PARA MENU</a>
-</button>    
-
-</html>
+    <head>
+        <meta charset="utf-8">
+        <title>Menu</title>
+        <link rel="stylesheet" type="text/css" href="menu.css"> 
+    </head>
+    <button>
+        <a href="menu.php">Voltar para o menu</a>
+    </button>
 <?php
 
     include ('conexao.php');
