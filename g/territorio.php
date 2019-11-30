@@ -11,9 +11,7 @@
 </html>
 <?php
     echo "<table style='border: solid 1px black;'>";
-    echo "<tr><th>Id</th><th>Nome Companhia</th><th>Nome Contato</th>
-          <th>Titulo Contato</th><th>Endereço</th><th>Cidade</th><th>Regiao</th>
-          <th>CEP</th><th>Pais</th><th>Telefone</th><th>Fax</th></tr>";
+    echo "<tr><th>Id territorio</th><th>Regiao</th><th>Id regiao</th></tr>";
 
     class TableRows extends RecursiveIteratorIterator {
         function __construct($it) {
@@ -41,7 +39,7 @@
         $conn = new PDO('mysql:host=localhost;dbname='.$banco, 
         $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("SELECT * FROM fornecedores");
+        $stmt = $conn->prepare("SELECT * FROM territorios");
         $stmt->execute();
 
         // set the resulting array to associative
