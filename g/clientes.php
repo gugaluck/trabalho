@@ -9,7 +9,9 @@
     </button> 
     <?php
     echo "<table style='border: solid 1px black;'>";
-    echo "<tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>";
+    echo "<tr><th>Id</th><th>Nome Companhia</th><th>Nome Contato</th>
+          <th>Titulo Contato</th><th>Endereco</th><th>Cidade</th><th>Regiao</th><th>CEP</th>
+          <th>Pais</th><th>Telefone</th><th>Fax</th></tr>";
 
     class TableRows extends RecursiveIteratorIterator {
         function __construct($it) {
